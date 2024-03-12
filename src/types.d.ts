@@ -13,5 +13,8 @@ interface ITodoList{
 }
 
 interface IListItem{
-    item:TodoType
+    item:TodoType;
+    key: string | number
 }
+
+ type AddFn =(text:string) => void
