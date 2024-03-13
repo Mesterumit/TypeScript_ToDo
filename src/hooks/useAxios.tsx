@@ -4,6 +4,7 @@ import axios from 'axios';
 // i am havin interface for axios hook to let the other componnet know what kid of promise it will return
 interface AxiosHook {
     getTodos: () => Promise<TodoType[]>;
+    addTodo: AddFn;
 }
 
 const useAxios = (): AxiosHook => {
@@ -55,9 +56,9 @@ const useAxios = (): AxiosHook => {
 //      specific value but resolves with `undefined` when it completes
 //     successfully.
 
-    const addTodos:AddFn = async (task) => {
+    const addTodo:AddFn = async (text) => {
         const newTodo = {
-            task: task,
+            task: text,
             isDone: false,
 
         }
@@ -66,7 +67,7 @@ const useAxios = (): AxiosHook => {
             getTodos()
         }
     }
-    // this is returning "getTodos" object
-    return { getTodos }
+    
+    return { getTodos, addTodo }
 }
 export default useAxios

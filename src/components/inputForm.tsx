@@ -1,16 +1,28 @@
-import React from 'react'
+import React,{useState} from 'react'
 
+interface IInputForm{
+  addTodo:AddFn
+}
 
+const InputForm:React.FC<IInputForm> = ({addTodo})=>{
 
-const InputForm = () => {
-  
+  const [task,setTask] = useState("")
+
+  const handleClick=(e: React.FormEvent)=>{
+    e.preventDefault()
+    addTodo(task)
+    setTask('')
+  }
+
   return (
-    <div className="input-form">
+    <form className="input-form" onSubmit={handleClick}>
       <input
         className="input-task"
         placeholder="Enter the todo..."
         type="text"
         maxLength={40}
+        value={task}
+        onChange={(e)=> setTask(e.target.value)}
         
       />
       <button
@@ -19,8 +31,8 @@ const InputForm = () => {
       >
         Add New Todo
       </button>
-    </div>
+    </form>
   )
-}
 
+  }
 export default InputForm
