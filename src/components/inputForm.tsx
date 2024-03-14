@@ -1,16 +1,20 @@
 import React,{useState} from 'react'
 
 interface IInputForm{
-  addTodo:AddFn
+  addTodo:AddFn;
+  setTodos:React.Dispatch<React.SetStateAction<TodoType[]>>;
+  getTodos: ()=> Promise<TodoType[]>;
 }
 
-const InputForm:React.FC<IInputForm> = ({addTodo})=>{
+const InputForm:React.FC<IInputForm> = ({addTodo,setTodos,getTodos})=>{
 
-  const [task,setTask] = useState("")
+  const [task,setTask] = useState("") 
 
-  const handleClick=(e: React.FormEvent)=>{
+  const handleClick=async (e: React.FormEvent)=>{
     e.preventDefault()
-    addTodo(task)
+    await addTodo(task)
+    const data:TodoType[]= await getTodos()
+    setTodos(data)
     setTask('')
   }
 

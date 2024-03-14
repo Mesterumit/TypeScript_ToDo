@@ -10,11 +10,22 @@ interface TodoType{
 
 interface ITodoList{
     todos: TodoType[]
+    toggleTodo: ToogleFn;
+    getTodos:() => Promise<TodoType[]>;
+    setTodos: (todos:TodoType[]) => void;
+    deleteTodo: DeleteFn;
 }
+type ToogleFn =(item:TodoType)=> void;
+
+type DeleteFn = (id: string | number) => void;
 
 interface IListItem{
     item:TodoType;
-    key: string | number
+    key: string | number;
+    toggleTodo: ToogleFn;
+    getTodos:() => Promise<TodoType[]>;
+    setTodos: (todos:TodoType[]) => void;
+    deleteTodo: DeleteFn;
 }
 
  type AddFn =(text:string) => void

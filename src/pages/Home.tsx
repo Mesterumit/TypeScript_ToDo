@@ -24,7 +24,7 @@ const [todos, setTodos] = useState<TodoType[]>([])
 
 // i can desctructure the object from hook
 // useAxios is returning an object, so i should destructere it 
-const {getTodos,addTodo} = useAxios()
+const {getTodos,addTodo,toggleTodo,deleteTodo} = useAxios()
 
 useEffect(()=>{
   const fetchData = async()=>{
@@ -44,8 +44,8 @@ console.log(todos)
 
   return (
     <div className='main'>
-      <InputForm addTodo={addTodo} />
-      <TodoList todos={todos}/>
+      <InputForm addTodo={addTodo} setTodos={setTodos} getTodos={getTodos}  />
+      <TodoList todos={todos} toggleTodo={toggleTodo} setTodos={setTodos} getTodos={getTodos} deleteTodo={deleteTodo}/>
     </div>
   )
 }
