@@ -1,4 +1,5 @@
 {
+  "homepage": "https://Mesterumit.github.io/TypeScript_ToDo",
   "name": "reacttypescript",
   "version": "0.1.0",
   "private": true,
@@ -18,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "homepage": "https://Mesterumit.github.io/TypeScript_ToDo",
+
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
